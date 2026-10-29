@@ -38,3 +38,64 @@ def mostrar_tabuleiro(tabuleiro, tamanho):
         print()
 
     print("   +---+---+---+\n")
+
+def ler_numero(mensagem, minimo, maximo):
+    while True:
+        entrada = input(mensagem).strip()
+
+        if entrada.isdigit():
+            numero = int(entrada)
+
+            if numero >= minimo and numero <= maximo:
+                return numero
+
+        print("Entrada invalida! Digite um numero entre",
+              minimo, "e", maximo, ".")
+
+        
+def verificar_vitoria(tabuleiro, simbolo):
+    tamanho = len(tabuleiro)
+
+    # Verifica as linhas
+    for i in range(tamanho):
+        venceu = True
+
+        for j in range(tamanho):
+            if tabuleiro[i][j] != simbolo:
+                venceu = False
+
+        if venceu:
+            return True
+
+    # Verifica as colunas
+    for j in range(tamanho):
+        venceu = True
+
+        for i in range(tamanho):
+            if tabuleiro[i][j] != simbolo:
+                venceu = False
+
+        if venceu:
+            return True
+
+    venceu = True
+
+    for i in range(tamanho):
+        if tabuleiro[i][i] != simbolo:
+            venceu = False
+
+    if venceu:
+        return True
+
+    
+    venceu = True
+
+    for i in range(tamanho):
+        if tabuleiro[i][tamanho - 1 - i] != simbolo:
+            venceu = False
+
+    if venceu:
+        return True
+
+    return False
+
