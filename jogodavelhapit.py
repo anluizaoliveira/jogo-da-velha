@@ -56,7 +56,7 @@ def ler_numero(mensagem, minimo, maximo):
 def verificar_vitoria(tabuleiro, simbolo):
     tamanho = len(tabuleiro)
 
-    # Verifica as linhas
+    
     for i in range(tamanho):
         venceu = True
 
@@ -67,7 +67,7 @@ def verificar_vitoria(tabuleiro, simbolo):
         if venceu:
             return True
 
-    # Verifica as colunas
+
     for j in range(tamanho):
         venceu = True
 
@@ -87,7 +87,7 @@ def verificar_vitoria(tabuleiro, simbolo):
     if venceu:
         return True
 
-    
+   
     venceu = True
 
     for i in range(tamanho):
@@ -98,4 +98,27 @@ def verificar_vitoria(tabuleiro, simbolo):
         return True
 
     return False
+
+def contar_vazias(tabuleiro, tamanho):
+    vazias = 0
+
+    for i in range(tamanho):
+        for j in range(tamanho):
+            if tabuleiro[i][j] == " ":
+                vazias = vazias + 1
+
+    return vazias
+
+def mostrar_regras():
+    print("\n===== REGRAS DO JOGO =====")
+    print("Dois jogadores participam: X e O.")
+    print("O jogador X comeca.")
+    print("Cada jogador escolhe uma linha e uma coluna.")
+    print("As linhas e colunas vao de 1 a 3.")
+    print("Vence quem alinhar tres simbolos iguais.")
+    print("O alinhamento pode ser horizontal, vertical")
+    print("ou diagonal.")
+    print("Se nao houver casas vazias e ninguem vencer,")
+    print("a partida termina empatada.")
+    print("==========================\n")
 
