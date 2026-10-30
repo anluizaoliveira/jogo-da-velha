@@ -19,3 +19,18 @@ O objetivo é desenvolver um jogo da velha executado pelo terminal, aplicando os
 - Anna Luiza
 - Cristhian Mesquita
 
+## 2. Objetivos
+
+- Aplicar conceitos básicos de programação em Python.
+- Trabalhar com estruturas condicionais e de repetição.
+- Utilizar funções para organizar o código.
+- Desenvolver a lógica necessária para o funcionamento do jogo.
+- Praticar o trabalho em equipe e o uso do Git e GitHub.
+
+## 3. Tecnologias utilizadas
+
+- **Python:** linguagem utilizada no desenvolvimento do jogo.
+- **Visual Studio Code:** editor de código utilizado para desenvolver e testar o projeto.
+- **Git:** ferramenta utilizada para controlar as versões do código.
+- **GitHub:** plataforma utilizada para armazenar o projeto e acompanhar as alterações realizadas pelos integrantes.
+
