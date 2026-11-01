@@ -122,3 +122,119 @@ def mostrar_regras():
     print("a partida termina empatada.")
     print("==========================\n")
 
+def mostrar_placar(placar):
+    print("\n===== PLACAR =====")
+    print("Vitorias de X:", placar["X"])
+    print("Vitorias de O:", placar["O"])
+    print("Empates:", placar["Empates"])
+    print("==================\n")
+
+def jogar_partida(placar, historico, registros):
+    tamanho = 3
+    tabuleiro = criar_tabuleiro(tamanho)
+
+    # Tuplas identificam os jogadores
+    jogador_x = input("Nome do jogador X: ").strip()
+    jogador_o = input("Nome do jogador O: ").strip()
+
+    if jogador_x == "":
+        jogador_x = "Jogador X"
+
+    if jogador_o == "":
+        jogador_o = "Jogador O"
+
+    jogador_x = jogador_x.upper()
+    jogador_o = jogador_o.upper()
+
+    jogadores = {
+        "X": jogador_x,
+        "O": jogador_o
+    }
+
+
+    casas_usadas = set()
+
+    simbolo = "X"
+    resultado = ""
+
+    while True:
+        mostrar_tabuleiro(tabuleiro, tamanho)
+
+        print("Vez de", jogadores[simbolo], "(" + simbolo + ")")
+
+        linha = ler_numero("Escolha a linha (1 a 3): ", 1, 3) - 1
+        coluna = ler_numero("Escolha a coluna (1 a 3): ", 1, 3) - 1
+
+        # Cada posicao e uma tupla (linha, coluna)
+        posicao = (linha, coluna)
+
+        if posicao in casas_usadas:
+            print("Essa casa ja foi escolhida. Tente novamente.")
+            continue
+
+        if tabuleiro[linha][coluna] != " ":
+            print("Essa casa esta ocupada. Tente novamente.")
+            continue
+
+        tabuleiro[linha][coluna] = simbolo
+        casas_usadas.add(posicao)
+
+        if verificar_vitoria(tabuleiro, simbolo):
+            mostrar_tabuleiro(tabuleiro, tamanho)
+
+            print("Vitoria de", jogadores[simbolo] + "!")
+
+            placar[simbolo] = placar[simbolo] + 1
+
+            nome_vencedor = jogadores[simbolo]
+
+            if nome_vencedor not in registros:
+                registros[nome_vencedor] = 0
+
+            registros[nome_vencedor] = (
+                registros[nome_vencedor] + 1
+            )
+
+            resultado = nome_vencedor + " venceu"
+            break
+
+        if contar_vazias(tabuleiro, tamanho) == 0:
+            mostrar_tabuleiro(tabuleiro, tamanho)
+
+            print("A partida terminou empatada!")
+
+            placar["Empates"] = placar["Empates"] + 1
+            resultado = "Empate"
+            break
+
+        if simbolo == "X":
+            simbolo = "O"
+        else:
+            simbolo = "X"
+
+    
+    partida = (jogador_x, jogador_o, resultado)
+    historico.append(partida)
+
+    print("Resultado registrado no historico.\n")
+
+
+
+def mostrar_historico(historico):
+    print("\n===== HISTORICO =====")
+
+    if len(historico) == 0:
+        print("Nenhuma partida realizada.")
+    else:
+        for i in range(len(historico)):
+            partida = historico[i]
+
+            print(
+                str(i + 1) + ". " +
+                partida[0] + " x " +
+                partida[1] + " - " +
+                partida[2]
+            )
+
+    print("=====================\n")
+
