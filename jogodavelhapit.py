@@ -262,3 +262,26 @@ def mostrar_estatisticas(placar, historico):
               str(percentual_empates) + "%")
 
     print("========================\n")
+
+def mostrar_ranking(registros):
+    ranking = []
+
+    for nome in registros:
+        item = (registros[nome], nome)
+        ranking.append(item)
+
+    ranking.sort(reverse=True)
+
+    print("\n===== RANKING =====")
+
+    if len(ranking) == 0:
+        print("Ainda nao existem vitorias registradas.")
+    else:
+        for i in range(len(ranking)):
+            print(
+                str(i + 1) + "º - " +
+                ranking[i][1] + ": " +
+                str(ranking[i][0]) + " vitoria(s)"
+            )
+
+    print("===================\n")
