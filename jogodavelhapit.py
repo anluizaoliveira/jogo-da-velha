@@ -238,3 +238,27 @@ def mostrar_historico(historico):
 
     print("=====================\n")
 
+def mostrar_estatisticas(placar, historico):
+    total = len(historico)
+
+    print("\n===== ESTATISTICAS =====")
+    print("Total de partidas:", total)
+    print("Vitorias de X:", placar["X"])
+    print("Vitorias de O:", placar["O"])
+    print("Empates:", placar["Empates"])
+
+    if total > 0:
+        percentual_x = round(placar["X"] * 100 / total, 1)
+        percentual_o = round(placar["O"] * 100 / total, 1)
+        percentual_empates = round(
+            placar["Empates"] * 100 / total, 1
+        )
+
+        print("Percentual de vitorias de X:",
+              str(percentual_x) + "%")
+        print("Percentual de vitorias de O:",
+              str(percentual_o) + "%")
+        print("Percentual de empates:",
+              str(percentual_empates) + "%")
+
+    print("========================\n")
