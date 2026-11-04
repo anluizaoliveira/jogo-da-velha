@@ -285,3 +285,55 @@ def mostrar_ranking(registros):
             )
 
     print("===================\n")
+    
+
+
+
+def main():
+    placar = {
+        "X": 0,
+        "O": 0,
+        "Empates": 0
+    }
+
+    historico = []
+
+    # Guarda as vitorias individuais de cada jogador
+    registros = {}
+
+    while True:
+        print("===== JOGO DA VELHA =====")
+        print("1 - Jogar")
+        print("2 - Ver regras")
+        print("3 - Ver placar")
+        print("4 - Ver historico")
+        print("5 - Estatisticas da sessao")
+        print("6 - Ranking de jogadores")
+        print("7 - Sair")
+
+        opcao = ler_numero("Escolha uma opcao (1 a 7): ", 1, 7)
+
+        if opcao == 1:
+            jogar_partida(placar, historico, registros)
+
+        elif opcao == 2:
+            mostrar_regras()
+
+        elif opcao == 3:
+            mostrar_placar(placar)
+
+        elif opcao == 4:
+            mostrar_historico(historico)
+
+        elif opcao == 5:
+            mostrar_estatisticas(placar, historico)
+
+        elif opcao == 6:
+            mostrar_ranking(registros)
+
+        elif opcao == 7:
+            print("Obrigado por jogar! Ate a proxima.")
+            break
+
+
+main()
